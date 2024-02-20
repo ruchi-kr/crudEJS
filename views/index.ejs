@@ -1,0 +1,57 @@
+<%- include ('layout/header') %>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 p-3 m-3 ">
+        <% if (message) { %>
+
+          <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+           
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>
+              <%= message.message %>
+            </strong>
+          </div>
+          <% } %>
+
+            <% if (users!=="") { %>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">IMAGE</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">E-MAIL</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <% users.forEach((row,index)=> { %>
+                    <tr>
+                      <th scope="row">
+                        <%= index+1 %>
+                      </th>
+                      <td><img width="40px" height="40px" src="<%= row.image %>" class="rounded-circle" alt="profile"></td>
+                      <td>
+                        <%= row.name %>
+                      </td>
+                      <td>
+                        <%= row.email %>
+                      </td>
+                      <td>
+                        <%= row.phone %>
+                      </td>
+                      <td><a href="/edit/<%= row._id %>" class="text-primary"><i
+                            class="fa-regular fa-pen-to-square fa-lg"></i></a></td>
+                      <td><a href="/delete/<%= row._id %>" class="text-danger"><i
+                            class="fa-regular fa-trash-can fa-lg"></i></a></td>
+                    </tr>
+                    <% }); %>
+
+                </tbody>
+              </table>
+            <% }; %>
+      </div>
+    </div>
+  </div>
+  <%- include ('layout/footer') %>

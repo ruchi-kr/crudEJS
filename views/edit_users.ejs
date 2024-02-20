@@ -1,0 +1,33 @@
+<%- include ('layout/header') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 shadow-lg p-3 m-3 ">
+                <h1>Edit <%= users.name %></h1>
+                <form action="/edit/<%= users._id %>" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+                    <input name="name" value="<%= users.name %>" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Full Name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input name="email" value="<%= users.email %>" type="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
+                    <input name="phone" value="<%= users.phone %>" type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Contact Number">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">select image</label>
+                    <input name="image" class="form-control" type="file" id="formFile">
+                    <img src="images/<%= users.image %>" width="40px" height="40px">
+                    <input type="hidden" name="old_image" value="<%= users.image %>">
+                </div>
+                <div class="d-grid gap-2 my-5">
+                    <button class="btn btn-dark" type="submit" name="submit" value="edit user">Edit User</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <%- include ('layout/footer') %>
